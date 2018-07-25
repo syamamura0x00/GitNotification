@@ -20,14 +20,19 @@ app.controller('gitCtrlLog', function($scope, $cookies, gitModelLog) {
     $scope.repository_buf = $cookies.get('last-repository');
     $scope.repository = "None";
 
-    $scope.updateLogs = function() {
+    $scope.registRepository = function() {
         $scope.repository = $scope.repository_buf;
         $cookies.put('last-repository', $scope.repository);
+    }
 
+    $scope.updateLogs = function() {
         gitModelLog.getLogAll(0, $scope.repository).then(function(res) {
             $scope.logs = res.data['logs'];
         });
     };
 
-});
+    $scope.sendNortify = function() {
 
+    };
+
+});

@@ -1,63 +1,67 @@
 <!DOCTYPE html>
 <html lang="ja" ng-app="App">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>Git Notification</title>
-    </head>
-    <body>
-        <div class="container-fluid" ng-controller="gitCtrlLog">
-            <h1>Git Notification</h1>
-            <label>Repository is <b>{{repository}}</b></label>
-            <hr>
-            <div class="row">
-                <div class="col-md-8">
-                    <button type="button" class="btn btn-secondary">Pull</button>
-                    <button type="button" class="btn btn-secondary">Fetch</button>
-                    <button type="button" class="btn btn-secondary">Push</button>
-                    <button type="button" class="btn btn-secondary">Commit</button>
-                </div>
-                <div class="col-md-3">
-                        <input type="text" class="form-control" id="repository" placeholder="Choice a repository" ng-model="repository_buf">
-                    </div>
-                    <div class="col-md-1">
-                        <button type="button" class="btn btn-info" ng-click="this.updateLogs()">Choice</button>
-                    </div>
-                </div>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 
-            <hr>
-            <!-- Log -->
-            <div class="card-block" ng-cloak>
-                <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="log in logs" id="{{log['hash']}}">
-                        <div class="row">
-                            <div class="col-md-7">
-                                {{log['message']}}
-                            </div>
-                            <div class="col-md-2">
-                                {{log['author']}}
-                            </div>
-                            <div class="col-md-3">
-                                {{log['authored_date']}}
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+    <title>Git Notification</title>
+</head>
+
+<body>
+    <div class="container-fluid" ng-controller="gitCtrlLog">
+        <h1>Git Notification</h1>
+        <label>Repository is <b>{{repository}}</b></label>
+        <hr>
+        <div class="row">
+            <div class="col-md-8">
+                <button type="button" class="btn btn-success">Refresh</button>
+                <button type="button" class="btn btn-secondary">Pull</button>
+                <button type="button" class="btn btn-secondary">Fetch</button>
+                <button type="button" class="btn btn-secondary">Push</button>
+                <button type="button" class="btn btn-secondary">Commit</button>
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" id="repository" placeholder="Choice a repository" ng-model="repository_buf">
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-info" ng-click="this.updateLogs()">Choice</button>
             </div>
         </div>
 
-        <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <hr>
+        <!-- Log -->
+        <div class="card-block" ng-cloak>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="log in logs" id="{{log['hash']}}">
+                    <div class="row">
+                        <div class="col-md-7">
+                            {{log['message']}}
+                        </div>
+                        <div class="col-md-2">
+                            {{log['author']}}
+                        </div>
+                        <div class="col-md-3">
+                            {{log['authored_date']}}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-        <!-- Angular -->
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-cookies.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-        <script type="text/javascript" src="/js/main.js"></script>
-    </body>
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-cookies.min.js"></script>
+
+    <script type="text/javascript" src="/js/main.js"></script>
+</body>
+
 </html>
