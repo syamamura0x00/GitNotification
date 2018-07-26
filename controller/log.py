@@ -15,6 +15,9 @@ class ApiLogController(ApiBase):
             "repository": repository
             , "logs": []
             , "hash": logs[0].split(',')[0]
+            , "author": logs[0].split(',')[1]
+            , "message": logs[0].split(',')[3]
+
         }
 
         for log in logs:
