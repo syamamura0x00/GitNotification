@@ -18,7 +18,7 @@
         <hr>
         <div class="row">
             <div class="col-md-8">
-                <button type="button" class="btn btn-success">Refresh</button>
+                <button type="button" class="btn btn-success" ng-click="this.updateLogs()">Refresh</button>
                 <button type="button" class="btn btn-secondary">Pull</button>
                 <button type="button" class="btn btn-secondary">Fetch</button>
                 <button type="button" class="btn btn-secondary">Push</button>
@@ -28,7 +28,7 @@
                 <input type="text" class="form-control" id="repository" placeholder="Choice a repository" ng-model="repository_buf">
             </div>
             <div class="col-md-1">
-                <button type="button" class="btn btn-info" ng-click="this.updateLogs()">Choice</button>
+                <button type="button" class="btn btn-info" ng-click="this.choiceRepository()">Choice</button>
             </div>
         </div>
 
@@ -50,18 +50,36 @@
                     </div>
                 </li>
             </ul>
+            <hr>
+            <!-- Log -->
+            <div class="card-block" ng-cloak>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="log in logs" id="{{log['hash']}}">
+                        <div class="row">
+                            <div class="col-md-7">
+                                {{log['message']}}
+                            </div>
+                            <div class="col-md-2">
+                                {{log['author']}}
+                            </div>
+                            <div class="col-md-3">
+                                {{log['authored_date']}}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-    <!-- Angular -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-cookies.min.js"></script>
+        <!-- Angular -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-cookies.min.js"></script>
 
-    <script type="text/javascript" src="/js/main.js"></script>
+        <script type="text/javascript" src="/js/main.js"></script>
 </body>
 
 </html>

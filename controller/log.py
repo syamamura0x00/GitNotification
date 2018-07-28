@@ -11,12 +11,15 @@ class ApiLogController(ApiBase):
         git = Git(r"/git", repository)
         logs = git.log(limit)
 
+        splited_first_log = logs[0].split(',')
+
         body = {
             "repository": repository
             , "logs": []
-            , "hash": logs[0].split(',')[0]
-            , "author": logs[0].split(',')[1]
-            , "authored_date": logs[0].split(',')[3]
+            , "hash": splited_first_log[0]
+            , "author": splited_first_log[1]
+            , "authored_date": splited_first_log[2]
+            , "message": splited_first_log[3]
         }
 
         for log in logs:
