@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.6
+#!/usr/bin/env python3
 # -*- Coding: utf-8 -*-
 
 from flask import Flask
@@ -6,6 +6,7 @@ from flask import Response, request
 import json
 
 from controller.log import ApiLogController
+from controller.pull import ApiPullController
 
 app = Flask(__name__)
 
@@ -35,11 +36,11 @@ def api_log(limit, repository):
     c = ApiLogController(limit=limit, repository=repository)
     return c.main()
 
+@app.route('/api/pull/<repository>')
+def api_pull(repository):
+    c = ApiPullController(repository=repository)
+    return c.main()
 
-def _exec_command(command):
-    result = subprocess.run(command, shell=True, timeout=30, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
-
-    return result.stdout.splitlines()
 
 
 if __name__ == '__main__':

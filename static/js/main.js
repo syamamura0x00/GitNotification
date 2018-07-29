@@ -37,13 +37,13 @@ app.controller('gitCtrlLog', function($scope, $cookies, gitModelLog) {
                     body: res.data['author'] + "\n" + res.data['message']
                 };
                 var notification = new Notification("新着コミット ", notify_opt);
-
             }
-
             $scope.last_hash = res.data['hash'];
             console.log($scope.last_hash);
         });
     };
+
+    $scope.commit;
 
 
 });

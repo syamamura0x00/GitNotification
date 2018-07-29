@@ -8,7 +8,7 @@ class ApiLogController(ApiBase):
         limit = self.get_params('limit')
         repository = self.get_params('repository')
 
-        git = Git(r"/git", repository)
+        git = Git(self.config.get('git', 'path'), repository)
         logs = git.log(limit)
 
         splited_first_log = logs[0].split(',')

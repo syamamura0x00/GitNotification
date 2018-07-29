@@ -13,10 +13,13 @@ class Git(object):
         self.exec_git_command(command)
 
     def pull(self):
-        pass
+        command = "git pull"
+        return self.exec_git_command(command)
+
 
     def push(self):
         pass
+
 
     def log(self, limit=0):
         arg_limit = ''

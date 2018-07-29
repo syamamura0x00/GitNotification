@@ -3,6 +3,7 @@
 from flask import request, Response
 import traceback
 import json
+import configparser
 
 class ApiException(Exception):
     def __init__(self, response):
@@ -14,6 +15,8 @@ class ApiException(Exception):
 class ApiBase(object):
     def __init__(self, **params):
         self._params = params
+        self.config = self.config_loader('./gitnotification.ini')
+
 
     def main(self):
         try:
@@ -24,6 +27,12 @@ class ApiBase(object):
         #     return Response(response="<h1>Internal Server Error</h1><hr><p>Git Notification</p>", mimetype="text/html", status=500)
 
         return resp
+    
+    def config_loader(self, path):
+        config = configparser.ConfigParser()
+        config.read(path, 'utf-8')
+
+        return config
 
     def get_params(self, key):
         return self._params[key]
